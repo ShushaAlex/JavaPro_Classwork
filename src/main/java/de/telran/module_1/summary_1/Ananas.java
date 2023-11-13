@@ -12,8 +12,8 @@ public class Ananas extends Fruit {
     @Override
     public String toString() {
         return "Ananas {" +
-                "country = '" + country + '\'' +
-                ", color = '" + super.getColor() + '\'' +
+                "country = '" + country +
+                ", color = '" + super.getColor() +
                 ", sugar = " + super.getSugar() +
                 ", vitamins = " + Arrays.toString(super.getVitamins()) +
                 " }";
