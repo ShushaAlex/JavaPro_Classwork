@@ -16,7 +16,11 @@ public abstract class Account {
     public abstract void deposit(double sum);
 
     public void setStatus(String status) {
-        this.status = status;
+        if (status.equals("opened") || status.equals("closed") || status.equals("frozen")){
+            this.status = status;
+        } else {
+            System.out.println("Incorrect status, try again.");
+        }
     }
 
     public void closeAccount(String closeDate) {
