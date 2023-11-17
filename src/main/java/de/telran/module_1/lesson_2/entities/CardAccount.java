@@ -1,6 +1,10 @@
 package de.telran.module_1.lesson_2.entities;
 
-public class CardAccount extends ClientAccount {
+import de.telran.module_1.lesson_2.interfaces.AdminCard;
+
+import java.time.LocalDate;
+
+public class CardAccount extends ClientAccount implements AdminCard {
 
     private double overdraft;
 
@@ -33,5 +37,15 @@ public class CardAccount extends ClientAccount {
     @Override
     public void deposit(double sum) {
         balance += sum;
+    }
+
+    @Override
+    public void closeAccount(LocalDate closingDate) {
+
+    }
+
+    @Override
+    public String getStatus() {
+        return this.status;
     }
 }

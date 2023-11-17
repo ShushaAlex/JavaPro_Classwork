@@ -1,6 +1,10 @@
 package de.telran.module_1.lesson_2.entities;
 
-public class CreditAccount extends ClientAccount {
+import de.telran.module_1.lesson_2.interfaces.AdminCredit;
+
+import java.time.LocalDate;
+
+public class CreditAccount extends ClientAccount implements AdminCredit {
 
     private double maxWithdraw;
     private double creditLimit;
@@ -48,5 +52,15 @@ public class CreditAccount extends ClientAccount {
         } else {
             System.out.println("Operation declined, your balance can't be greater than 0");
         }
+    }
+
+    @Override
+    public void closeAccount(LocalDate closingDate) {
+
+    }
+
+    @Override
+    public String getStatus() {
+        return this.status;
     }
 }

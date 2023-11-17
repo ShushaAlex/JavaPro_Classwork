@@ -1,6 +1,10 @@
 package de.telran.module_1.lesson_2.entities;
 
-public class DepositAccount extends ClientAccount {
+import de.telran.module_1.lesson_2.interfaces.AdminDeposit;
+
+import java.time.LocalDate;
+
+public class DepositAccount extends ClientAccount implements AdminDeposit {
     private double maxDeposit;
 
     public DepositAccount(double maxDeposit, String accountOwner, String accountNumber) {
@@ -40,5 +44,15 @@ public class DepositAccount extends ClientAccount {
         } else {
             System.out.println("You try to deposit more as allowed");
         }
+    }
+
+    @Override
+    public void closeAccount(LocalDate closingDate) {
+
+    }
+
+    @Override
+    public String getStatus() {
+        return this.status;
     }
 }

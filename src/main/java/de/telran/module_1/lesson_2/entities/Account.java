@@ -1,6 +1,8 @@
 package de.telran.module_1.lesson_2.entities;
+import de.telran.module_1.lesson_2.interfaces.Owner;
+import de.telran.module_1.lesson_2.interfaces.Сashier;
 
-public abstract class Account {
+public abstract class Account implements Сashier, Owner {
     protected String accountNumber;
     protected double balance;
     protected String status;
@@ -11,10 +13,6 @@ public abstract class Account {
         return balance;
     }
 
-    public abstract void withdraw(double sum);
-
-    public abstract void deposit(double sum);
-
     public void setStatus(String status) {
         if (status.equals("opened") || status.equals("closed") || status.equals("frozen")){
             this.status = status;
@@ -24,7 +22,7 @@ public abstract class Account {
     }
 
     public void closeAccount(String closeDate) {
-        if (balance != 0) {
+        if (balance == 0) {
             this.status = "closed";
             this.closeDate = closeDate;
             System.out.println("Your account is closed");
