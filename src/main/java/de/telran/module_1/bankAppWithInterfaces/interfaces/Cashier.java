@@ -1,6 +1,6 @@
-package de.telran.module_1.lesson_2.interfaces;
+package de.telran.module_1.bankAppWithInterfaces.interfaces;
 
-public interface Сashier {
+public interface Cashier {
     void deposit(double sum);
     void withdraw(double sum);
     double getBalance();

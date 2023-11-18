@@ -1,13 +1,15 @@
-package de.telran.module_1.lesson_2.entities;
-import de.telran.module_1.lesson_2.interfaces.Owner;
-import de.telran.module_1.lesson_2.interfaces.Сashier;
+package de.telran.module_1.bankAppWithInterfaces.entities;
+import de.telran.module_1.bankAppWithInterfaces.interfaces.ownerInterfaces.Owner;
+import de.telran.module_1.bankAppWithInterfaces.interfaces.Cashier;
 
-public abstract class Account implements Сashier, Owner {
+import java.time.LocalDate;
+
+public abstract class Account implements Cashier, Owner {
     protected String accountNumber;
     protected double balance;
     protected String status;
-    protected String openDate;
-    protected String closeDate;
+    protected LocalDate openDate;
+    protected LocalDate closeDate;
 
     public double getBalance() {
         return balance;
@@ -21,7 +23,7 @@ public abstract class Account implements Сashier, Owner {
         }
     }
 
-    public void closeAccount(String closeDate) {
+    public void closeAccount(LocalDate closeDate) {
         if (balance == 0) {
             this.status = "closed";
             this.closeDate = closeDate;

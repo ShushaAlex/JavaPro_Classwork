@@ -1,21 +1,22 @@
-package de.telran.module_1.lesson_2.entities;
+package de.telran.module_1.bankAppWithInterfaces.entities;
 
-import de.telran.module_1.lesson_2.interfaces.AdminCredit;
+import de.telran.module_1.bankAppWithInterfaces.interfaces.adminInterfaces.AdminCredit;
+import de.telran.module_1.bankAppWithInterfaces.interfaces.ownerInterfaces.OwnerCredit;
 
 import java.time.LocalDate;
 
-public class CreditAccount extends ClientAccount implements AdminCredit {
+public class CreditAccount extends ClientAccount implements AdminCredit, OwnerCredit {
 
     private double maxWithdraw;
     private double creditLimit;
 
-    public CreditAccount(String accountOwner, String accountNumber, double maxWithdraw, double creditLimit) {
+    public CreditAccount(String accountOwner, String accountNumber, double maxWithdraw, double creditLimit, LocalDate openingDate) {
         this.accountOwner = accountOwner;
         this.accountNumber = accountNumber;
         this.maxWithdraw = maxWithdraw;
         this.creditLimit = creditLimit;
         this.status = "opened";
-        this.openDate = "today";
+        this.openDate = openingDate;
     }
 
     public double getMaxWithdraw() {
@@ -36,7 +37,7 @@ public class CreditAccount extends ClientAccount implements AdminCredit {
 
     @Override
     public void withdraw(double sum) {
-        if (sum <= maxWithdraw && balance - sum >= -creditLimit) {
+        if (sum <= maxWithdraw && (balance - sum) >= -creditLimit) {
             balance -= sum;
             System.out.println("You have successfully withdrawn money from your account!");
         } else {

@@ -1,19 +1,20 @@
-package de.telran.module_1.lesson_2.entities;
+package de.telran.module_1.bankAppWithInterfaces.entities;
 
-import de.telran.module_1.lesson_2.interfaces.AdminCard;
+import de.telran.module_1.bankAppWithInterfaces.interfaces.adminInterfaces.AdminCard;
+import de.telran.module_1.bankAppWithInterfaces.interfaces.ownerInterfaces.OwnerCard;
 
 import java.time.LocalDate;
 
-public class CardAccount extends ClientAccount implements AdminCard {
+public class CardAccount extends ClientAccount implements AdminCard, OwnerCard {
 
     private double overdraft;
 
-    public CardAccount(double overdraft, String accountOwner, String accountNumber) {
+    public CardAccount(double overdraft, String accountOwner, String accountNumber, LocalDate openingDate) {
         this.overdraft = overdraft;
         this.accountOwner = accountOwner;
         this.accountNumber = accountNumber;
         this.status = "opened";
-        this.openDate = "today";
+        this.openDate = openingDate;
     }
 
     public double getOverdraft() {
@@ -26,7 +27,7 @@ public class CardAccount extends ClientAccount implements AdminCard {
 
     @Override
     public void withdraw(double sum) {
-        if (balance - sum >= -overdraft) {
+        if ((balance - sum) >= -overdraft) {
             balance -= sum;
             System.out.println("You have successfully withdrawn money from your account!");
         } else {
